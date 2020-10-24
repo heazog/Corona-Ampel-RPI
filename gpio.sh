@@ -13,6 +13,6 @@ if [ $CMD = "init" ]; then
 	echo $VALUE > /sys/class/gpio/gpio$GPIO/direction
 fi
 
-if [ "$1" = "set" ]; then
+if [ $CMD = "set" ]; then
 	echo $VALUE > /sys/class/gpio/gpio$GPIO/value
 fi
