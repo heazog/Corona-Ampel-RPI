@@ -1,9 +1,9 @@
 #!/bin/bash
 
-WARNSTUFE=$(wget -q -O - "http://corona-ampel.gv.at/sites/corona-ampel.gv.at/files/assets/Warnstufen_Corona_Ampel_aktuell.json" | jq ".[0].Warnstufen | .[] | select(.Name==\"$1\") | .Warnstufe" | tr -d '"')
+WARNSTUFE=$(wget -q -O - "https://corona-ampel.gv.at/sites/corona-ampel.gv.at/files/assets/Warnstufen_Corona_Ampel_aktuell.json" | jq ".[0].Warnstufen | .[] | select(.Name==\"$1\") | .Warnstufe" | tr -d '"')
 
 if [ -z "$WARNSTUFE" ]; then
-    WARNSTUFE=$(wget -q -O - "http://corona-ampel.gv.at/sites/corona-ampel.gv.at/files/assets/Warnstufen_Corona_Ampel_Gemeinden_aktuell.json" | jq ".[0].Warnstufen | .[] | select(.Name==\"$1\") | .Warnstufe" | tr -d '"')
+    WARNSTUFE=$(wget -q -O - "https://corona-ampel.gv.at/sites/corona-ampel.gv.at/files/assets/Warnstufen_Corona_Ampel_Gemeinden_aktuell.json" | jq ".[0].Warnstufen | .[] | select(.Name==\"$1\") | .Warnstufe" | tr -d '"')
 fi
 
 function set {
