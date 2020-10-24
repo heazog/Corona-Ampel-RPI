@@ -7,7 +7,6 @@ if [ -z "$WARNSTUFE" ]; then
 fi
 
 function set {
-    COLOR=$1
     case $1 in
       "green")
           ./gpio.sh set 26 0
@@ -56,11 +55,11 @@ case $WARNSTUFE in
 
   4)
     echo "rot"
-    ´set red
+    set red
     ;;
 
   *)
-    echo -n "error"
+    echo "error"
     ;;
 esac
 
